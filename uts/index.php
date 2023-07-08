@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="styleesheet" href="style.css">
-    <title>Document</title>
 </head>
 <body>
     <h2>warung makan</h2>
@@ -20,19 +19,20 @@
         </tr>
         <body>
         <?php 
+        
         $No = 1;
         $data =mysqli_query($koneksi ,"SELECT * FROM tb_makanan");
         while ($isi= mysqli_fetch_array($data)){
             
         ?>
-        <tr>
+        <tr class="warning">
             <td><?php echo $No++ ?></td>
             <td><?php echo $isi['nama_makanan'];?></td>
             <td><?php echo $isi['harga'];?></td>
             <td><?php echo $isi['stok'];?></td>
             <td>
-            <a href ="ubah.php?id=<?= $row['id'];?>">Edit</a> ||
-            <a href ="">delete</a>
+            <a href ="edit.php?id=<?php echo $isi['id_makanan'];?>">Edit</a>|
+            <a href ="delete.php?id=<?php echo $isi['id_makanan'];?>" >delete</a>
             </td>
         </tr>
         <?php } ?>
